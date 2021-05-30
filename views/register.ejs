@@ -1,0 +1,82 @@
+<%- include ('./parts/header')%>
+
+
+
+
+<div class="container  mt-3">
+        
+      
+<h1 class="text-center">Registrar usuario</h1>
+
+<br>
+
+<form class= "row -4" method="post" action="/admin/users/addUser">
+
+    <div class="col-6">
+        <div class="form-group mt-3">
+            <label class="fw-bold">Nombre</label>
+            <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-group mt-3">
+            <label class="fw-bold">Apellido</label>
+            <input type="text" name="apellido" class="form-control" placeholder="Apellido">
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-group mt-3">
+            <label class="fw-bold">Email</label>
+            <input type="text" name="email" class="form-control" placeholder="Email">
+        </div>
+    </div>
+    
+    <div class="col-6">
+        <div class="form-group mt-3">
+            <label class="fw-bold">Usuario</label>
+            <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <label class="fw-bold">Contraseña</label>
+        <input type="password" name="password" class="form-control"  placeholder="contraseña">
+    </div>
+    
+    <div class="form-group mt-3">
+        <label class="fw-bold">Confirma la contraseña</label>
+        <input type="password" name="password2" class="form-control"  placeholder="Confirmar contraseña">
+    </div>
+
+    
+
+    <div class="col-1">
+    <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+    </div>
+</form>
+  
+      </div>
+       
+
+
+
+        
+  
+
+
+
+
+
+
+
+
+
+
+<!-- BOOTSTRAP 5 JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

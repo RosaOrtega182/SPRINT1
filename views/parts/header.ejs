@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecla MARKET R&G</title>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap" rel="stylesheet"> 
+    <!--BOOTSTRAP 5/-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- custom css-->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--FONTAWESOME-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+    
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="color_navegador">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/img/rg.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                RG
+            </a>
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="/"> <i class="fas fa-home"></i>&nbspHome</a>
+                    </li>
+                    <% if (user && user.administrador == 1){%>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/admin/cms">&nbspCMS</a>
+                        </li>   
+                    <%}%>
+                </ul>
+                <form action="/product" method="GET" class="d-flex mx-auto" style="width: 50%;">
+                    <input class="form-control me-2" type="search" placeholder="Buscar... " aria-label="Search" name="searchProduct">
+                    <div class="btn-group" role="group" >
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            </button>
+                            <button type="submit" class="btn btn-primary text-white">
+                            Buscar
+                            </button>
+              
+                    </div>
+            
+           
+                </form>
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/checkout">
+                                <i class="fas fa-shopping-cart"></i>&nbspMis compras (
+                                <% if (typeof cart !== "undefined") {%>
+                                    <% let cantCart=0%>
+                                    <% for(let carrito of cart){ %>
+                                        <% cantCart= cantCart+carrito.cuantity;%>
+
+                                    <% }%>
+                                    <%=cantCart %>
+                                <% } else{ %>
+                                    0
+                                <% } %>
+                  
+                            )</a>
+                        </li>
+             
+                        <% if (user) {%>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/users/logout">Hola, <%= user.usuario %>&nbsp(Cerrar sesión)</a>
+                        </li>
+                        <%} else {%>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/users/register">&nbspRegistrarse</a>
+                        </li>
+  
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/users/login">&nbspIniciar sesión</a>
+                        </li>
+                        <%}%>
+
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <%- messages('messages',locals)%> 
+
+    <% if (errors) {%>
+        <% errors.forEach(function(error) { %>
+            <div class="alert alert-danger">
+                <%= error.msg %>
+            </div>
+        <% });%>
+    <% }%>

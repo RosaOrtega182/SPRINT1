@@ -1,0 +1,54 @@
+<%- include ('../parts/header')%>
+  
+    
+
+
+<div class="container mt-3">
+    <h1 class="page-title text-center">Usuarios</h1>
+<a href="/admin/users/addUser" class="btn btn-primary">&nbspAgregar un nuevo usuario</a>
+<br>
+
+  
+
+<% if (cantidad > 0) { %>
+    <table class="table table-striped alignmiddle mt-3">
+        <thead>
+            <tr class="home">
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Usuario</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% todosLosUsuarios.forEach(function(users){ %>
+            <tr>
+                <td><%= users.nombre %></td>
+                <td><%= users.email %></td>
+                <td><%= users.usuario %></td>
+                
+                <td><a href="/admin/users/editUser/<%= users.id %>"><i class="fas fa-user-edit"></i>&nbspEditar</a></td>
+                <td><a class="confirmDeletion" href="/admin/users/deleteUser/<%= users.id %>"><i class="fas fa-user-times"></i>&nbspEliminar</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <% } else {%>
+    <h3 class="text-center">No hay usuarios.</h3>
+    <% }%>
+
+
+
+  </div>
+
+
+
+
+
+<!-- BOOTSTRAP 5 JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

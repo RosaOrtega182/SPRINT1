@@ -1,0 +1,96 @@
+<%- include ('../parts/header')%>
+
+
+
+
+
+
+<div class="container mt-3">
+    <h1 class="text-center">Editar usuario</h1>
+<a href="/admin/users" class="btn btn-primary">Regresar a ver todos los usuarios</a>
+<br>
+
+    <form class= "row -4" method="POST" action="/admin/users/editUser/<%=id%>">
+
+        <div class="col-6">
+        <div class="form-group mb-3">
+            <label for="" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" value="<%= nombre %>" placeholder="Nombre">
+        </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group mb-3">
+                <label for="" class="form-label">Apellido</label>
+                <input type="text" class="form-control" name="apellido" value="<%= apellido %>" placeholder="Nombre">
+            </div>
+            </div>
+
+        <div class="col-6">
+        <div class="form-group mb-3">
+            <label for="" class="form-label">Email</label>
+            <input type="text" class="form-control" name="email" value="<%= email %>" placeholder="Email">
+        </div>
+        </div>
+
+        <div class="col-6">
+        <div class="form-group mb-3">
+            <label for="" class="form-label">Usuario</label>
+            <input type="text" class="form-control" name="usuario" value="<%=usuario%>" placeholder="Nombre">
+        </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="" class="form-label">Contraseña</label>
+            <input type="password" name="password" class="form-control" value="<%=password%>" placeholder="Contraseña">
+        </div>
+        
+
+        <div class="form-group mt-3">
+            <label for="">Tipo de usuario</label>
+            <select name="tipo" class="form-control">
+                <option value=1
+                    <% if (1 == administrador) { %>
+                    selected="selected"
+                    <% } %>        
+                    >Administrador</option>
+                 <option value=0
+                    <% if (0 == administrador) { %>
+                    selected="selected"
+                    <% } %>        
+                    >Normal</option>
+            </select>
+        </div>
+        
+
+
+        <input type="hidden" name="id" value="<%= id%>">
+
+
+
+
+
+        <div class="col-1">
+        <button type="submit" class="btn btn-primary mt-3">Editar</button>
+       </div>
+      </form>
+  </div>
+
+        
+  
+
+
+
+
+
+
+
+
+
+
+<!-- BOOTSTRAP 5 JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

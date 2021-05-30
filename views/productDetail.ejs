@@ -1,0 +1,105 @@
+<%- include ('parts/header')%>
+     
+
+<div class="container-fluid  mt-3">
+  <div class="row">
+    <div class="col-2" >
+      <div class= "container">
+        <h4>Categorías</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Aves"><i class="fas fa-dove"></i>&nbspAves</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Conejos"><i class="fas fa-carrot"></i>&nbspConejos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Equinos"><i class="fas fa-horse"></i>&nbspEquinos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Gatos"><i class="fas fa-cat"></i>&nbspGatos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Insectos"><i class="fas fa-spider"></i>&nbspInsectos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Peces"><i class="fas fa-fish"></i>&nbspPeces</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Perros"><i class="fas fa-dog"></i>&nbspPerros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Reptiles"><i class="fas fa-frog"></i>&nbspReptiles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Roedores"><i class="fas fa-otter"></i>&nbspRoedores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/Otros"><i class="fas fa-hippo"></i>&nbspOtros</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+       
+    <div class="col-10">
+      <div class="row">
+        <div class="container"> 
+          <div class="row"> 
+            <div class="col text-center">
+                <img class="spi text-center" src="<%= pictures[0].url%>">
+            </div>
+            <div class="col ">
+              <div class="container mt-3">
+                <h2 class="page-header text-center"><i class="fas fa-paw"></i> <%= title%></h2>
+                <br>
+                <h3>Precio: $<%= price%> </h3>
+                <%if(loggedIn){%>
+                  <a href="/cart/add/<%=id %>" style="width: 100%" class="btn btn-primary  fs-5">Agregar a mi carrito</a>
+                <%}else{%>
+                  <p>Usted debe de estar logeado para iniciar sesión</p>
+                <%}%>
+               
+              </div>
+
+            </div>
+          </div> 
+        </div>  
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="container m-3">
+            <h3 class="text-center">Características principales</h3>
+            <table class="table mt-3"  style="background-color: rgb(234, 246, 253);">
+              <tbody>
+                <% attributes.forEach(function (attr){%>
+                  <tr>
+                    <th scope="row"><%= attr.name%></th>
+                      <td><%= attr.value_name%></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+<!-- BOOTSTRAP 5 JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

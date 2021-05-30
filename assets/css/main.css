@@ -1,0 +1,62 @@
+#color_navegador
+{
+
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,#12c2e9, #c471ed, #f64f59 );  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,#12c2e9, #c471ed, #f64f59); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+
+#color_tabla
+{
+
+  background: #ef32d9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+
+#categorias
+{
+   background-color: white;
+    padding: 50px 0px 30px 0;
+   /* margin-top: 40px;*/
+}
+
+
+#patrocinador
+{
+  background: #ef32d9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,  #ef32d9, #89fffd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+    padding: 10px 0px 10px 0;
+   
+}
+
+
+
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+
+
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

@@ -1,0 +1,104 @@
+<%- include ('parts/header')%>
+     
+
+
+      <div class="container-fluid  mt-3">
+        
+        <div class="row">
+          
+          <div class="col-2" >
+          <div class= "container">
+            
+            <h4>Categorías</h4>
+            <ul class="nav flex-column">
+             
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Aves"><i class="fas fa-dove"></i>&nbspAves</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Conejos"><i class="fas fa-carrot"></i>&nbspConejos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Equinos"><i class="fas fa-horse"></i>&nbspEquinos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Gatos"><i class="fas fa-cat"></i>&nbspGatos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Insectos"><i class="fas fa-spider"></i>&nbspInsectos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Peces"><i class="fas fa-fish"></i>&nbspPeces</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Perros"><i class="fas fa-dog"></i>&nbspPerros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Reptiles"><i class="fas fa-frog"></i>&nbspReptiles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Roedores"><i class="fas fa-otter"></i>&nbspRoedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/product/Otros"><i class="fas fa-hippo"></i>&nbspOtros</a>
+              </li>
+              
+
+            
+            </ul>
+  
+          </div>
+  
+          </div>
+       
+
+
+
+          <div class="col-10">
+            <div class="container-fluid">
+              <div class="row">
+                <% for(let producto of products.results){%>
+                <div class="col-10 mb-2 col-md-3">
+                    <div class="card" >
+                      
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_<%=producto.thumbnail_id%>-V.webp" class="card-img-top" width="100%" height="300px">
+                        
+                        <div class="card-body d-flex flex-column" style="height:250px" >
+                            
+                            <h5 class="card-title" ><%=producto.title %></h5>
+                            <br>
+                            <p class="card-text fst-italic">Precio: $<%=producto.price %></p>
+                            <a href="/product/PageDetails/<%=producto.id %>" class="btn-item btn btn-primary mt-auto">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+
+
+
+              </div>
+            </div>
+          </div>
+ 
+
+  
+          
+        </div>
+        </div>
+  
+
+
+
+
+
+
+
+
+
+
+<!-- BOOTSTRAP 5 JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
