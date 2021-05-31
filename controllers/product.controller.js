@@ -15,11 +15,11 @@ exports.getAllProducts=async(req,res,next)=>
     const instanceProductos = await product.getProductsInnerJoinByIdCategory(id);
     
     
-    const returnedTarget = Object.assign({}, instanceProductos);
+   // const returnedTarget = Object.assign({}, instanceProductos);
 
       
       console.log('Ship Name:dlññññññññññññ', instanceProductos);
-      console.log('Ship Name:dlññññññññññññ', returnedTarget[0].nombre);
+     // console.log('Ship Name:dlññññññññññññ', returnedTarget[0].nombre);
      
     
 
@@ -43,11 +43,13 @@ exports.getAllProducts=async(req,res,next)=>
 
 
 
-exports.getProductDetail=(req,res,next)=>
+exports.getProductDetail=async(req,res,next)=>
 {
     var loggedIn = (req.isAuthenticated()) ? true : false;
     
     let idProducto=req.params.idProduct;
+
+   let instanceProductos=await product.findByPrimaryKey(idProducto)
 
     MercadoLibre.getProductById(idProducto)
     .then(products=>
@@ -60,6 +62,7 @@ exports.getProductDetail=(req,res,next)=>
             pictures: products[0].body.pictures,
             title: products[0].body.title,
             price: products[0].body.price,
+            instanceProductos: instanceProductos,
             loggedIn: loggedIn
         });
 
