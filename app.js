@@ -20,6 +20,7 @@ const sequelize= require('./models/conexion');
 const Producto= require('./models/product');
 const User= require('./models/user');
 const Category= require('./models/category');
+const Order= require('./models/order')
 const dotenv=require ('dotenv');
 dotenv.config();
 
@@ -182,9 +183,12 @@ async function inicioServidor()
         Category.hasMany(Producto, {foreignKey: 'idml', sourceKey: 'id'});
         Producto.belongsTo(Category, {foreignKey: 'idml', targetKey: 'id'});
 
+       
+
         await Producto.sync({alter:true});
         await User.sync({alter:true});
         await Category.sync({alter:true});
+        await Order.sync({alter:true});
 
        
        

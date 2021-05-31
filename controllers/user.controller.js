@@ -143,18 +143,22 @@ exports.registerAndAddUserPost=async(req,res,next)=>
 exports.editUserGet= async(req,res,next)=>
 {
    let idUser= req.params.idUser;
+  
 
-   const instanceUser= await user.findByEdit(idUser);
+   const instanceUser2= await user.findByEdit(idUser);
+
+  
+    const instanceUser= Object.assign({}, instanceUser2);
 
   res.render('admin/editUser',
    {
-       nombre: instanceUser.nombre,
-       apellido: instanceUser.apellido,
-       email: instanceUser.email,
-       usuario: instanceUser.usuario,
-       password: instanceUser.password,
-       administrador: instanceUser.administrador,
-       id: instanceUser.id
+       nombre: instanceUser[0].nombre,
+       apellido: instanceUser[0].apellido,
+       email: instanceUser[0].email,
+       usuario: instanceUser[0].usuario,
+       password: instanceUser[0].password,
+       administrador: instanceUser[0].administrador,
+       id: instanceUser[0].id
 
 
    });  
@@ -347,8 +351,14 @@ exports.loginUserPost=async (req,res,next)=>
         if (err) { return next(err); }
         if (!userio) 
         {
+            req.flash('danger','usuario o contraseña incorrecto');
          res.redirect('/users/login');
+        
+
+    
+         
         }
+        else{
 
         req.logIn(userio, async function(err) {
             if (err) { return next(err); }
@@ -362,10 +372,13 @@ exports.loginUserPost=async (req,res,next)=>
                 })
             
                 req.session.token=token;
-                res.redirect('/');
+             
+                   res.redirect('/')
+             
+             
 
           });
-        
+        }
            
         
        

@@ -31,7 +31,7 @@
         <% total=total+subtotal%>
       <tr>
        
-        <td><img src="<%= product.image%>" ></td>
+        <td><img src="<%= product.image%>" style="width: 90px" ></td>
         <td  class="align-middle"><%= product.title%></td>
         <td  class="align-middle">$<%= product.price%></td>
         <td  class="align-middle text-center"><%= product.cuantity%></td>
@@ -59,20 +59,16 @@
             </td>
             <td >
             
-              <a class="btn btn-primary buynow" href="#">Pagar</a>
+              <a class="btn btn-primary buynow" href="/checkout/buy">Comprar</a>
             </td>
           </tr>
       
       </tbody>
-    </table>
-  
-  
-  
-  
-  
-  
-  
+    </table>  
   </div>
+
+
+
   
 
 <% }else {%> 

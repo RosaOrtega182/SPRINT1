@@ -18,7 +18,7 @@ exports.getAllProducts=async(req,res,next)=>
    // const returnedTarget = Object.assign({}, instanceProductos);
 
       
-      console.log('Ship Name:dlññññññññññññ', instanceProductos);
+     // console.log('Ship Name:dlññññññññññññ', instanceProductos);
      // console.log('Ship Name:dlññññññññññññ', returnedTarget[0].nombre);
      
     
@@ -48,9 +48,17 @@ exports.getProductDetail=async(req,res,next)=>
     var loggedIn = (req.isAuthenticated()) ? true : false;
     
     let idProducto=req.params.idProduct;
+    let instanceProductos=0;
 
-   let instanceProductos=await product.findByPrimaryKey(idProducto)
-
+     if(idProducto.includes('M'))
+     {
+         instanceProductos=null;
+     }  
+     else
+     {
+    instanceProductos=await product.findByPrimaryKey(idProducto)
+     }
+ 
     MercadoLibre.getProductById(idProducto)
     .then(products=>
     {

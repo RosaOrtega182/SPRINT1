@@ -140,6 +140,9 @@ Aquí el findByPk método obtiene solo una entrada de la tabla, utilizando la cl
 
 
 
+
+    
+
     compareAsync(param1, param2) 
     {
         return new Promise(function(resolve, reject) 
@@ -171,6 +174,10 @@ Aquí el findByPk método obtiene solo una entrada de la tabla, utilizando la cl
             throw new Error (err)
         }
     }
+
+
+
+    
 
 
 

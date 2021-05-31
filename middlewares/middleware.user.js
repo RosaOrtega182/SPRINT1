@@ -27,6 +27,10 @@ module.exports.verificathionUsers = async (req,res,next)=>
     }
     else 
     {
-        res.status(400).json('Este sistema es privado y seguro, necesita un Token para ingresar')
+        req.flash('danger', 'Este sistema es privado y seguro, necesita un Token para ingresar');
+        res.redirect('/users/login');
+     
+
+        //res.status(400).json('Este sistema es privado y seguro, necesita un Token para ingresar')
     }
 }

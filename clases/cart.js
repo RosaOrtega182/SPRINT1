@@ -49,6 +49,67 @@ module.exports= class Cart
 
     }
 
+
+
+    static save2(product, idProducto)
+    {
+        if (cart)
+        {
+            let newItem=true;
+        
+            for(var i=0; i< cart.length;i++)
+            {
+                if(cart[i].id==idProducto)
+                {
+                    cart[i].cuantity++;
+                    newItem=false;
+                    break;
+                }
+            }
+        
+            if(newItem)
+            {
+                cart.push(
+                {
+                    id: product.id,
+                    image: product.imagen,
+                    title: product.nombre,
+                    price: product.precio,
+                    cuantity: 1
+        
+                });
+            }
+
+        }
+        else
+        {
+
+            cart=[];
+            cart.push(
+            {
+                id: product.id,
+                image: product.imagen,
+                title: product.nombre,
+                price: product.precio,
+                cuantity: 1
+            })
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     static addProduct(idProduUpdate)
     {
         for(let i=0;i < cart.length;i++)
