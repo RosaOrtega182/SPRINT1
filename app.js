@@ -177,9 +177,16 @@ async function inicioServidor()
         /* User.sync({ alter: true }): Esto verifica cuál es el estado actual de la tabla en la base de datos (qué columnas tiene, 
          cuáles son sus tipos de datos, etc.), y luego realiza los cambios necesarios en la tabla para que coincida con
           el modelo.*/
+
+        // Here we can connect countries and cities base on country code
+        Category.hasMany(Producto, {foreignKey: 'idml', sourceKey: 'id'});
+        Producto.belongsTo(Category, {foreignKey: 'idml', targetKey: 'id'});
+
         await Producto.sync({alter:true});
         await User.sync({alter:true});
         await Category.sync({alter:true});
+
+       
        
         await sequelize.authenticate();
         console.log("Se ha conectado a la Base de datos yujuuu");

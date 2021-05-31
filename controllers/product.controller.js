@@ -1,11 +1,30 @@
 const MercadoLibre=require('../clases/mercadoLibre');
+const Producto= require('../models/product')
+const product = Producto.build();
 
 
 
-exports.getAllProducts=(req,res,next)=>
+exports.getAllProducts=async(req,res,next)=>
 {
+
     //get id
     let id=req.params.id
+
+
+
+    const instanceProductos = await product.getProductsInnerJoinByIdCategory(id);
+    
+    
+    const returnedTarget = Object.assign({}, instanceProductos);
+
+      
+      console.log('Ship Name:dlññññññññññññ', instanceProductos);
+      console.log('Ship Name:dlññññññññññññ', returnedTarget[0].nombre);
+     
+    
+
+
+
     //get products By IdCategory to Class
     MercadoLibre.getProductsByIdCategory(id)
     .then(products=>
@@ -13,6 +32,7 @@ exports.getAllProducts=(req,res,next)=>
        //render
         res.render('product',
         {
+            instanceProductos: instanceProductos,
             products: products
         });
 

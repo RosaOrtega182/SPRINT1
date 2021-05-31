@@ -1,6 +1,6 @@
 const Producto= require('../models/product')
 const product = Producto.build();
-const Categoria= require('../models/category')
+const Categoria= require('../models/category');
 const category = Categoria.build();
 
 exports.getProductIndexes=async(req,res,next)=>
@@ -97,11 +97,7 @@ exports.editProductGet= async(req,res,next)=>
     
    const idProducto= req.params.idProduct;
    const instanceCategory= await category.listAllCategories();
-   const[instanceProduct]= await Producto.findAll({
-    where: {
-      id: idProducto
-    }
-  });
+   const instanceProduct= await product.findByPrimaryKey(idProducto);
 
   res.render('admin/editProduct',
    {
@@ -136,8 +132,8 @@ exports.editProductPost=async(req,res,next)=>
     let descripcion=req.body.descripcion;
     let precio=req.body.precio;
     let imagen=req.body.imagen;
-    let categoria= req.body.categoria;
-    let id= req.body.id;
+    let idml= req.body.categoria;
+    const id= req.params.idProduct;
 
    
     let errors= req.validationErrors();
@@ -145,59 +141,81 @@ exports.editProductPost=async(req,res,next)=>
     if(errors)
     {
         const instanceCategory= await category.listAllCategories();
+        const instanceProduct= await product.findByPrimaryKey(idProducto);
 
         res.render('admin/editProduct',
         {
-            nombre: nombre,
-            descripcion: descripcion,
-            precio:precio,
-            imagen: imagen,
-            idml:idml,
+            nombre: instanceProduct.nombre,
+            descripcion: instanceProduct.descripcion,
+            precio: instanceProduct.precio,
+            imagen: instanceProduct.imagen,
+            idml: instanceProduct.idml,
             categorias: instanceCategory,
-            errors: errors,
-            id:id
-        });  
+            id: instanceProduct.id,
+            user : null
+
+
+         });  
     }
     else
     {
-        // console.log("Estoy aquí");
-        //await Productos.create({ nombre: nombre, descripcion: descripcion, precio: precio, imagen: imagen });
-         
-        const product = await Producto.findOne({ where: { nombre: nombre  } });
+        const cantity = await product.countAllProductsByName(nombre,id);
+ 
+        
 
 
-        if(product)
+        if(cantity >= 1)
         {
 
             req.flash('danger','El nombre del producto ya ha sido creado');
-            res.render('admin/editProduct',
-                {
-                    nombre: nombre,
-                    descripcion: descripcion,
-                    precio:precio,
-                    imagen: imagen,
-                    errors: errors,
-                    id:id
-                 
-                 
-                });  
+            const instanceCategory= await category.listAllCategories();
+            const instanceProduct= await product.findByPrimaryKey(id);
+         
+             res.render('admin/editProduct',
+            {
+                nombre: instanceProduct.nombre,
+                descripcion: instanceProduct.descripcion,
+                precio: instanceProduct.precio,
+                imagen: instanceProduct.imagen,
+                idml: instanceProduct.idml,
+                categorias: instanceCategory,
+                id: instanceProduct.id,
+                user : null
+         
+            });  
               
-        // req.flash('success','Producto agregado troz');
-           
-                   // console.log("se creo");
+      
         }
         else
         {
-           console.log("QUI");
-            await Producto.update({ nombre: nombre, descripcion: descripcion,precio:precio,imagen:imagen }, {
-                where: {
-                  id:  id
-                }
-              });
-            res.redirect('/admin/products')        // console.log("no se creo");s
+           
+            await product.editProduct(nombre,descripcion,precio,imagen,idml,id);
+            req.flash('success', 'Se actualizo el producto!');
+            res.redirect('/admin/products')        
         }
     }
 }
   
+
+
+
+/* GET DELETE PRODUCT*/
+exports.deleteProductGet=async (req,res,next)=>
+{
+    let id = req.params.idProduct;
+    const instanceProduct= await product.deleteProduct(id) ;
+    if(instanceProduct===null)
+    {
+        req.flash('danger','El producto no se elimino');
+       
+    }
+    else
+    {
+        req.flash('success', 'Producto eliminado!');
+        res.redirect('/admin/products');
+       
+    }
+
+}
 
 

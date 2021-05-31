@@ -57,6 +57,41 @@
           <div class="col-10">
             <div class="container-fluid">
               <div class="row">
+
+
+
+
+
+                <%  if (instanceProductos !== null){%>
+                  <% for(let producto of instanceProductos){%>
+                    <div class="col-10 mb-2 col-md-3">
+                      <div class="card" >
+                        
+                              <img src="<%=producto.imagen %>" class="card-img-top" width="100%" height="300px">
+                          
+                          <div class="card-body d-flex flex-column" style="height:250px" >
+                              
+                              <h5 class="card-title" ><%=producto.nombre %></h5>
+                              <br>
+                              <p class="card-text fst-italic">Precio: $<%=producto.precio %></p>
+                              <a href="/product/PageDetails/<%=producto.id %>" class="btn-item btn btn-primary mt-auto">Ver detalles</a>
+                          </div>
+                      </div>
+                  </div>
+                  <% } %>
+                  <%}%>
+
+
+
+
+
+
+
+
+
+
+
+                
                 <% for(let producto of products.results){%>
                 <div class="col-10 mb-2 col-md-3">
                     <div class="card" >
